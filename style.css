@@ -1,0 +1,111 @@
+/*receteo de espacios*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://static.skillshare.com/uploads/video/thumbnails/c38251fc34fe43812b476c376c5d6945/1280-720"); 
+	background-size: 200vh;
+  background-size: contain;
+}
+
+#contenedor-pregunta {
+  background-image: url("https://eu-images.contentstack.com/v3/assets/blt8f94ebff857fe1ae/blt38b2ab4ea0da2357/6242e8d49eb79b7d7303c4bd/json-editor.svg");
+  text-align: center;
+}
+
+#contenedor-pregunta:hover {
+  animation: parpadeo 0.8s ease-in-out 5;
+  cursor: pointer;
+}
+
+.pregunta {
+  font-family: "Comic sans MS";
+  color: white;
+}
+
+.opcion {
+  background-image: url("donde.png");
+  background-size: 4vh;
+  color: rgb(10, 235, 21);
+  margin: 8px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.opcion:hover {
+  background-image: url("");
+  cursor: pointer;
+}
+
+.correcta::after {
+  content: '✅';
+  margin-left: 16px;
+}
+
+.incorrecta::after {
+  content: '❌';
+  margin-left: 16px;
+}
+
+@keyframes parpadeo {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.correcta, .incorrecta {
+  animation: parpadeo 0.3s ease-in-out 1;
+}
+
+.total {
+  color: brown;
+  text-align: center;
+  margin: 8px 8px 32px;
+}
+
+.contenedor-boton {
+  text-align: center;
+}
+
+#reiniciarBtn {
+  background-color: rgb(15, 235, 33);
+  padding: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#reiniciarBtn:hover {
+  border: 2px solid white;
+  color: rgb(221, 25, 11);
+  cursor: pointer;
+}
+
+footer {
+  background-image: url("https://i.ytimg.com/vi/qQjALhIEM3A/maxresdefault.jpg");
+  background-size: 6vh;
+}
+
+footer:hover {
+  background-image: url("");
+  cursor: pointer;
+}
+
+a:hover {
+  color: red;
+}
+
+audio {
+  width: 300px;
+  height: 15px;
+}
+
+#contenedor-resultado {
+  background-color: grey;
+}
+
+#contenedor-resultado:hover {
+  background-color: rgb(73, 63, 212);
+}
