@@ -82,6 +82,7 @@ body {
 
 #reiniciarBtn:hover {
   border: 2px solid white;
+  background-color: aqua;	
   color: rgb(221, 25, 11);
   cursor: pointer;
 }
