@@ -30,8 +30,9 @@ body {
   background-image: url("donde.png");
   background-repeat: no-repeat;
   background-position: right;
+  background-color: rgb(67, 216, 87);
   background-size: 4vh;
-  color: rgb(10, 235, 21);
+  color: rgb(250, 70, 25);
   margin: 8px;
   padding: 4px;
   border-radius: 4px;
@@ -109,5 +110,5 @@ audio {
 }
 
 #contenedor-resultado:hover {
-  background-color: rgb(73, 63, 212);
+  background-color: rgb(23, 7, 236);
 }
