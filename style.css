@@ -33,6 +33,7 @@ body {
   background-color: rgb(67, 216, 87);
   background-size: 4vh;
   color: rgb(250, 70, 25);
+  font-weight: bold;	
   margin: 8px;
   padding: 4px;
   border-radius: 4px;
