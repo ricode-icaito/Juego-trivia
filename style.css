@@ -33,7 +33,7 @@ body {
   background-color: rgb(67, 216, 87);
   background-size: 4vh;
   color: rgb(250, 70, 25);
-  font-weight: bold;	
+  font-weight: bold;
   margin: 8px;
   padding: 4px;
   border-radius: 4px;
@@ -83,23 +83,22 @@ body {
 
 #reiniciarBtn:hover {
   border: 2px solid white;
-  background-color: aqua;	
+  background-color: aqua;
   color: rgb(221, 25, 11);
   cursor: pointer;
 }
 
 footer {
-  background-image: url("https://i.ytimg.com/vi/qQjALhIEM3A/maxresdefault.jpg");
-  background-size: 6vh;
+  background-color: rgb(238, 135, 9);
 }
 
 footer:hover {
-  background-image: url("");
+  background-image: url("https://i.ytimg.com/vi/qQjALhIEM3A/maxresdefault.jpg");
   cursor: pointer;
 }
 
 a:hover {
-  color: red;
+  color: greenyellow;
 }
 
 audio {
@@ -112,5 +111,6 @@ audio {
 }
 
 #contenedor-resultado:hover {
-  background-color: rgb(23, 7, 236);
+  background-image: url("https://i.ytimg.com/vi/qQjALhIEM3A/maxresdefault.jpg");
+  background-size: 30vh;
 }
