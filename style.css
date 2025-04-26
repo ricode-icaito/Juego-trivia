@@ -23,7 +23,7 @@ body {
 
 .pregunta {
   font-family: "Comic sans MS";
-  color: white;
+  color: black;
 }
 
 .opcion {
@@ -65,7 +65,7 @@ body {
 }
 
 .total {
-  color: brown;
+  color: white;
   text-align: center;
   margin: 8px 8px 32px;
 }
@@ -107,7 +107,8 @@ audio {
 }
 
 #contenedor-resultado {
-  background-color: grey;
+  background-image: url("universal.jpg");
+  background-size: 20vh;
 }
 
 #contenedor-resultado:hover {
