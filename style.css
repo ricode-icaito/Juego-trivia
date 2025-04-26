@@ -40,7 +40,7 @@ body {
 }
 
 .opcion:hover {
-  background-image: url("");
+  background: url("");
   cursor: pointer;
 }
 
