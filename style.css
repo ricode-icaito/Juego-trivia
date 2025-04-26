@@ -28,6 +28,8 @@ body {
 
 .opcion {
   background-image: url("donde.png");
+  background-repeat: no-repeat;
+  background-position: right;
   background-size: 4vh;
   color: rgb(10, 235, 21);
   margin: 8px;
