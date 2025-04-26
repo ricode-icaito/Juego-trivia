@@ -7,7 +7,7 @@
 
 body {
   background-image: url("https://static.skillshare.com/uploads/video/thumbnails/c38251fc34fe43812b476c376c5d6945/1280-720"); 
-	background-size: 200vh;
+  background-size: 200vh;
   background-size: contain;
 }
 
