@@ -27,7 +27,7 @@ body {
 }
 
 .opcion {
-  background-image: url("donde.png");
+  background-image: url("img/donde.png");
   background-repeat: no-repeat;
   background-position: right;
   background-color: rgb(67, 216, 87);
@@ -107,7 +107,7 @@ audio {
 }
 
 #contenedor-resultado {
-  background-image: url("universal.jpg");
+  background-image: url("img/universal.jpg");
   background-size: 20vh;
 }
 
