@@ -1,0 +1,63 @@
+Algoritmo Detallado de la Página Web "Juego-Trivia" (Basado en main.js):
+
+Carga Inicial de la Página (index.html):
+
+El navegador carga el index.html y los recursos asociados (CSS, favicon, audio).
+Se ejecuta el script main.js (como un módulo).
+Importación de Preguntas y Respuestas:
+
+El script importa el objeto preguntasYRespuestas desde el archivo preguntas-y-respuestas.js. Se asume que este objeto tiene una estructura donde las claves son los temas de la trivia (ej: "capitales", "programacion") y los valores son arrays de objetos, donde cada objeto representa una pregunta y contiene las propiedades: pregunta (string), respuestaCorrecta (string) y respuestas (array de strings).
+Inicialización de Variables:
+
+preguntasSeleccionadas: Un array vacío que se utilizará para almacenar las preguntas del tema seleccionado.
+puntaje: Inicializado en 0, para llevar el conteo de las respuestas correctas del jugador.
+Selección de Elementos del DOM:
+
+Se obtienen referencias a los elementos HTML con los IDs:
+contenedor-pregunta: Donde se mostrará la pregunta actual.
+contenedor-opciones: Donde se mostrarán las opciones de respuesta.
+contenedor-resultado: Donde se mostrará el resultado final del juego.
+Punto de Entrada: mostrarTemas():
+
+Esta función se llama inicialmente cuando se carga la página.
+Limpia el contenido de contenedor-resultado.
+Establece el contenido de contenedor-pregunta para mostrar el título "Selecciona el tema:".
+Itera sobre las claves (temas) del objeto preguntasYRespuestas.
+Para cada tema, crea un nuevo elemento <p> con la clase "opcion" y el nombre del tema en mayúsculas, y lo añade al contenedor-opciones.
+Selecciona todos los elementos con la clase "opcion" dentro de contenedor-opciones.
+A cada opción de tema, se le añade un event listener que escucha el evento "click". Cuando se hace clic en un tema:
+Se obtiene el nombre del tema en minúsculas (tema = opcion.innerHTML.toLowerCase()).
+Se llama a la función seleccionarTema() pasando el tema seleccionado.
+Función seleccionarTema(tema):
+
+Recibe el tema seleccionado por el usuario.
+Asigna el array de preguntas correspondiente a ese tema desde preguntasYRespuestas a la variable preguntasSeleccionadas.
+Llama a la función mostrarPregunta() con el índice 0 para mostrar la primera pregunta del tema seleccionado.
+Función mostrarPregunta(indice):
+
+Recibe el indice de la pregunta a mostrar dentro del array preguntasSeleccionadas.
+Condición de Finalización: Si el indice es mayor o igual a la longitud de preguntasSeleccionadas, significa que se han mostrado todas las preguntas. En este caso, se llama a la función mostrarResultado() y se termina la ejecución de la función.
+Si hay preguntas restantes:
+Se desestructura el objeto de la pregunta actual (preguntasSeleccionadas[indice]) para obtener la pregunta, la respuestaCorrecta y el array de respuestas.
+Se actualiza el contenido de contenedor-pregunta con la pregunta actual.
+Se llama a la función mostrarOpciones() pasando el array de respuestas, la respuestaCorrecta y el indice actual.
+Función mostrarOpciones(respuestas, respuestaCorrecta, indice):
+
+Recibe el array de respuestas para la pregunta actual, la respuestaCorrecta y el indice de la pregunta.
+Limpia el contenido de contenedor-opciones.
+Itera sobre el array de respuestas.
+Para cada respuesta, crea un nuevo elemento <p> con la clase "opcion" y el texto de la respuesta, y lo añade al contenedor-opciones.
+Selecciona todos los elementos con la clase "opcion" dentro de contenedor-opciones (estas son las opciones de respuesta a la pregunta actual).
+A cada opción de respuesta, se le añade un event listener que escucha el evento "click". Cuando se hace clic en una opción:
+Se compara el texto de la opción clicada (opcion.innerHTML) con la respuestaCorrecta.
+Si la respuesta es correcta, se incrementa la variable puntaje y se añade la clase "correcta" al elemento de la opción.
+Si la respuesta es incorrecta, se añade la clase "incorrecta" al elemento de la opción.
+Se utiliza setTimeout() para llamar a la función mostrarPregunta() con el siguiente índice (indice + 1) después de un breve retraso de 500 milisegundos. Esto permite al usuario ver brevemente si su respuesta fue correcta o incorrecta.
+Función mostrarResultado():
+
+Limpia el contenido de contenedor-pregunta y contenedor-opciones.
+Actualiza el contenido de contenedor-resultado para mostrar el puntaje final del jugador, indicando cuántas preguntas acertó del total.
+Crea un botón con el ID "reiniciarBtn" dentro de contenedor-resultado.
+Añade un event listener al botón "Reiniciar". Cuando se hace clic en él:
+Se restablece la variable puntaje a 0.
+Se llama a la función mostrarTemas() para permitir al jugador seleccionar un nuevo tema y reiniciar el juego.

@@ -1,0 +1,123 @@
+// Pseudocódigo del Juego de Trivia
+
+// Importar las preguntas y respuestas desde el archivo "preguntas-y-respuestas.js"
+IMPORTAR preguntasYRespuestas
+
+// Variables globales
+preguntasSeleccionadas = [] // Array para almacenar las preguntas del tema seleccionado
+puntaje = 0 // Contador del puntaje del jugador
+
+// Seleccionar los elementos del DOM
+contenedorPregunta = SELECCIONAR elemento con ID "contenedor-pregunta"
+contenedorOpciones = SELECCIONAR elemento con ID "contenedor-opciones"
+contenedorResultado = SELECCIONAR elemento con ID "contenedor-resultado"
+
+// Función principal para mostrar los temas iniciales
+FUNCION mostrarTemas()
+    LIMPIAR contenido de contenedorResultado
+    ESTABLECER contenido de contenedorPregunta a "<h2>Selecciona el tema:</h2>"
+    LIMPIAR contenido de contenedorOpciones
+
+    // Iterar sobre los temas disponibles en preguntasYRespuestas
+    PARA CADA tema EN CLAVES de preguntasYRespuestas HACER
+        CREAR un nuevo elemento párrafo (p) con la clase "opcion"
+        ESTABLECER el texto del párrafo al tema en mayúsculas
+        AÑADIR el párrafo al contenedorOpciones
+    FIN PARA
+
+    // Seleccionar todas las opciones de tema
+    opcionesDeTema = SELECCIONAR todos los elementos con la clase "opcion" dentro de contenedorOpciones
+
+    // Añadir un event listener a cada opción de tema
+    PARA CADA opcion EN opcionesDeTema HACER
+        AÑADIR un listener de evento "click" a la opcion
+        CUANDO se haga click EN la opcion HACER
+            temaSeleccionado = texto de la opcion en minúsculas
+            LLAMAR a la función seleccionarTema con temaSeleccionado
+        FIN CUANDO
+    FIN PARA
+FIN FUNCION
+
+// Función para seleccionar un tema y mostrar la primera pregunta
+FUNCION seleccionarTema(tema)
+    preguntasSeleccionadas = preguntasYRespuestas[tema]
+    LLAMAR a la función mostrarPregunta con índice 0
+FIN FUNCION
+
+// Función para mostrar una pregunta dado su índice
+FUNCION mostrarPregunta(indice)
+    // Si se han mostrado todas las preguntas
+    SI indice ES mayor o igual a la longitud de preguntasSeleccionadas ENTONCES
+        LLAMAR a la función mostrarResultado
+        RETORNAR
+    FIN SI
+
+    // Obtener la pregunta actual y sus detalles
+    preguntaActual = preguntasSeleccionadas[indice]
+    preguntaTexto = preguntaActual.pregunta
+    respuestaCorrecta = preguntaActual.respuestaCorrecta
+    respuestas = preguntaActual.respuestas
+
+    // Mostrar la pregunta en el contenedor
+    ESTABLECER contenido de contenedorPregunta a "<h2>" + preguntaTexto + "</h2>"
+
+    // Mostrar las opciones de respuesta
+    LLAMAR a la función mostrarOpciones con respuestas, respuestaCorrecta e indice
+FIN FUNCION
+
+// Función para mostrar las opciones de respuesta de una pregunta
+FUNCION mostrarOpciones(respuestas, respuestaCorrecta, indice)
+    LIMPIAR contenido de contenedorOpciones
+
+    // Iterar sobre las opciones de respuesta
+    PARA CADA respuesta EN respuestas HACER
+        CREAR un nuevo elemento párrafo (p) con la clase "opcion"
+        ESTABLECER el texto del párrafo a la respuesta
+        AÑADIR el párrafo al contenedorOpciones
+    FIN PARA
+
+    // Seleccionar todas las opciones de respuesta
+    opcionesDeRespuesta = SELECCIONAR todos los elementos con la clase "opcion" dentro de contenedorOpciones
+
+    // Añadir un event listener a cada opción de respuesta
+    PARA CADA opcion EN opcionesDeRespuesta HACER
+        AÑADIR un listener de evento "click" a la opcion
+        CUANDO se haga click EN la opcion HACER
+            // Comprobar si la respuesta es correcta
+            SI texto de la opcion ES igual a respuestaCorrecta ENTONCES
+                INCREMENTAR puntaje
+                AÑADIR la clase "correcta" a la opcion
+            SINO
+                AÑADIR la clase "incorrecta" a la opcion
+            FIN SI
+
+            // Esperar un breve momento y mostrar la siguiente pregunta
+            ESPERAR 500 milisegundos
+            LLAMAR a la función mostrarPregunta con indice + 1
+        FIN CUANDO
+    FIN PARA
+FIN FUNCION
+
+// Función para mostrar el resultado final del juego
+FUNCION mostrarResultado()
+    LIMPIAR contenido de contenedorPregunta
+    LIMPIAR contenido de contenedorOpciones
+    ESTABLECER contenido de contenedorResultado a:
+        "<h2>Haz acertado " + puntaje + " de " + longitud de preguntasSeleccionadas + " preguntas:</h2>" +
+        "<div class = \"contenedor-boton\">" +
+        "<button id = \"reiniciarBtn\">Reiniciar</button>" +
+        "</div>"
+
+    // Seleccionar el botón de reiniciar
+    botonReiniciar = SELECCIONAR elemento con ID "reiniciarBtn" dentro de contenedorResultado
+
+    // Añadir un event listener al botón de reiniciar
+    AÑADIR un listener de evento "click" al botonReiniciar
+    CUANDO se haga click EN botonReiniciar HACER
+        ESTABLECER puntaje a 0
+        LLAMAR a la función mostrarTemas
+    FIN CUANDO
+FIN FUNCION
+
+// Punto de entrada del programa: Mostrar los temas iniciales
+LLAMAR a la función mostrarTemas
